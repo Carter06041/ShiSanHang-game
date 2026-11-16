@@ -1,0 +1,318 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>十三行·商海 v0.6.31 来报人姓氏</title><style>
+*{box-sizing:border-box}body{margin:0;background:#211b17;color:#eee3cb;font:15px Georgia,'Microsoft YaHei',serif;background-image:radial-gradient(ellipse at 50% 30%,#574b36,transparent 65%);min-height:100vh}header{padding:25px 5%;border-bottom:1px solid #ffffff15;display:flex;justify-content:space-between;color:#bca97d;letter-spacing:3px}main{max-width:1000px;margin:auto;padding:30px 24px;text-align:center}.eyebrow{color:#bda779;font-size:11px;letter-spacing:5px}h1{font-size:40px;letter-spacing:10px;margin:12px}#stats{display:flex;justify-content:center;gap:30px;margin:28px auto}.stat{width:90px;font-size:13px;color:#ccbea3}.bar{height:5px;background:#ffffff18;margin:12px 0}.fill{height:100%;background:#c3a66c;transition:width .3s}.stage{display:grid;grid-template-columns:1fr 320px 1fr;align-items:center;gap:30px}button{font:inherit;color:inherit;cursor:pointer;border:1px solid #a58c5755;background:#ffffff04;padding:18px;border-radius:3px;transition:.2s}button:hover{background:#bda77920;border-color:#bda779}button small{display:block;color:#bda779;margin-top:10px;font-size:11px}#card{background:#e7dcc2;color:#293a33;border:7px solid #b9ad91;outline:1px solid #d7c49a;box-shadow:0 20px 70px #0007;min-height:370px;touch-action:pan-y;cursor:grab;transition:transform .15s}.portrait{height:170px;background:#8a795b;position:relative;overflow:hidden;display:grid;place-items:center;font-size:95px}.portrait:before{content:'';position:absolute;width:145px;height:145px;border:1px solid #d5d6af66;border-radius:50%}.portrait:after{content:'✦';position:absolute;right:20px;top:15px;font-size:24px;color:#e6d4a3}#role{font-size:12px;letter-spacing:3px;color:#6d745e;margin-top:20px}#text{font-size:19px;line-height:1.8;padding:0 23px 20px;margin:13px 0}.hint{color:#929f8c;font-size:12px;margin:27px}#log{border-top:1px solid #ffffff18;padding:20px;color:#b4b9a4;min-height:65px;font-size:13px}footer{display:flex;justify-content:space-between;align-items:center;color:#889789;font-size:12px;margin-top:18px}footer button{padding:9px 14px}#end{display:none;padding:40px 15px}#end h2{font-size:32px}#end p{line-height:1.9;color:#bfc5b1}@media(max-width:650px){header{font-size:12px}main{padding:22px 18px}h1{font-size:30px}.stage{grid-template-columns:1fr 1fr;gap:16px;max-width:360px;margin:auto}#card{grid-column:1/3;grid-row:1;width:290px;justify-self:center;min-height:350px}.stage button{font-size:13px;padding:13px 6px}#stats{gap:16px;margin:22px auto}.hint{margin:20px 0}footer{gap:15px}}#prologue{max-width:650px;margin:30px auto;text-align:left;padding:28px;background:#ffffff06;border:1px solid #a58c5755}#introTitle{font-size:30px}#introText{white-space:pre-line;line-height:2;color:#d8cbb0}#people{text-align:left;margin:20px auto;max-width:700px;color:#bcb29b}#people summary{cursor:pointer;padding:12px}#npcList{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:18px}#npcList p{line-height:1.8;font-size:13px}#text{font-size:17px}#calendar{max-width:700px;margin:18px auto;text-align:left;color:#bcb29b;font-size:13px;line-height:1.8}#calendar summary{cursor:pointer}#calendar a{color:#d3b77a}button:disabled{opacity:.35;cursor:not-allowed}#chen{margin-top:24px}#chenStatus{max-width:600px;margin:12px auto;line-height:1.7}.stat{position:relative}.delta{display:block;min-height:24px;font:700 14px Arial,sans-serif;margin-top:6px}.increase{color:#a7dab5}.decrease{color:#ffa58d}.neutral{color:#a5aa9c}.danger{color:#ffb782}#previewHint{min-height:44px;max-width:650px;margin:0 auto 12px;color:#d5c39b;font-size:13px;line-height:1.6}#stats{margin-bottom:8px}#card{user-select:none;will-change:transform}button:focus-visible{outline:2px solid #d7c49a;outline-offset:4px}@media(prefers-reduced-motion:reduce){#card,.fill{transition:none}}.term-link{display:inline;padding:0;border:0;border-bottom:1px dotted currentColor;border-radius:0;background:transparent;color:inherit;font:inherit;line-height:inherit;cursor:help}.term-link:hover{background:#c8ad7633}#termPopup{position:fixed;z-index:1000;width:min(340px,calc(100vw - 24px));max-height:70vh;overflow:auto;padding:18px;background:#eee3cb;color:#293a33;border:1px solid #b79b65;border-radius:8px;box-shadow:0 10px 40px #0009;font-size:15px;line-height:1.8}#termPopup[hidden]{display:none}#termPopup p{margin:10px 0}#termPopup button{padding:5px 15px;border-color:#827552}</style>
+<header><span>⚓ 十三行·商海</span><span>一纸商约，一城风雨</span></header><main><div class="eyebrow">ZHOU · THE THIRTEEN HONGS</div><h1>十三行风云</h1><p class="eyebrow">百越 · 五羊港 · 浈江畔｜首航已归，第二轮远航初发</p><div id="year"></div><p id="forecast" class="hint"></p><div id="stats"></div><p id="previewHint" role="status" aria-live="polite">左右拖动预览影响，松手确认；短距离松手取消。</p><section id="prologue"><div class="eyebrow">THE MERCHANT’S CHRONICLE</div><h2 id="introTitle"></h2><p id="introText"></p><button id="start">接过印信，开始经营 →</button></section><section id="play"><div class="stage"><button id="left"></button><article id="card"><div class="portrait" id="portrait"></div><div id="role"></div><p id="text"></p></article><button id="right"></button></div><button id="chen">拜托陈守衡</button><p id="chenStatus" class="hint"></p><p class="hint">← → 方向键选择 · 点击选项 · 左右滑动卡牌</p></section><section id="end"><div class="eyebrow">THE CLOSE OF A LEDGER</div><h2 id="ending"></h2><p id="summary"></p><button data-newrun onclick="reset()">承接结局，重新起业 →</button></section><div id="log" aria-live="polite">你接掌五羊港十三行中的一家家族商行，行中称你为会首。四项指标须维持在 1—99，过低或过高均会失衡停业。</div><details id="world" style="max-width:700px;margin:20px auto;text-align:left;line-height:1.9"><summary>世界志 · 大周与十三行</summary><p>这里不是地球。大周由武氏皇帝统领，正处于朝廷组织大规模远航的海贸时代。你接过商会时，第一轮远航已归来，第二轮远航刚刚启程。五羊港位于大周南方的百越地区，临浈江通海水道，船队在这里集结，丝帛、瓷器与异域货物在这里交换。</p><p>本作官署以早期远航时代的市舶司为制度基底。贡使来船与寻常商船须分辨来意、各核文书，不能因官船奉使便任由私货通行。十三行与公行是本世界特许设置的商人组织，不代表现实同期制度。</p><p>海口风信、潮汐、浅滩与船货交接可作商事见闻；官署征税须有凭据，行商不得自立税目。具体税率、官职隶属和禁运名目不照搬后世成例。</p><section id="business"><h3>本行生意 · 家业与货路</h3><p>你接掌的是十三行中的一家家族商行，既自营货物，也替客商撮合买卖、办理货运。行中仍称你为会首；十三行与公行的共同事务，须同其他行商商议。</p><p><strong>主营：丝织品、瓷器、蔗糖。</strong>向织户、瓷商和糖坊订货，验货入仓，再寻找买家、安排装船。</p><p><strong>兼营：海外香料、染料等。</strong>依船货与订单收购，货价涨落、卖不出去的积货，都须由本行承担。</p><p><strong>中介业务：议价、通事、仓储、托运。</strong>替客商牵线、核译和代办事务，依约收取酬劳；若为买卖具保，也须承担相应责任。</p><p><strong>关联行业：盐、粮食、木材等。</strong>向专业商人采购，或合作承运、应急调度。港中各业各有经营者，并非都归本行掌管。</p></section><p>五羊港获准承办海外贸易的本地行商，惯称“十三行”，并不以十三家为定数。各行经营货物、接洽海客，也代办报验纳税与文书呈递；联合议事时称为公行。你掌管的是其中一家行号，不是整个公行。</p><p>朝廷在五羊港设市舶司，负责海船出入、报验核货、征收货税和执行贸易禁令。十三行则是获准承办海外买卖的商行群体，替海客接洽货物并代办手续；各行联合议价、协调同行事务时组成公行。三者各司其职，五羊港不再另设一套职责相同的海关官署。涉及官家采买时，货款与货税另记，不可混作一笔。行商可以接待来舶、代办手续，却不是征税官员，也不能自行决定放船。</p><p>港中常说的“三十六行”，泛指米粮、竹木、纸墨、丝绸、花果等各业，不是另一个统管商人的官署，也不限定城里只有三十六种生意。</p><p>行号与商馆并非一回事：行号是经营生意的商家；海客商馆是来客居停、议价和存货的场所。货街上，仓房、客舍与账房彼此相连。外客要同官府交涉，往往先请行商核译、代递文书。</p><p>共同议价只是规矩的一面。货物成色、秤量与契约是否可信，才关系到海客是否愿意把下一船生意交来。得了贸易便利，也可能被要求垫付官家采办的价款；账上的利钱并不等于手头可用的银钱。</p><p>五羊港背山面海，河网通向腹地，河口散布岛洲与浅滩。气候温暖湿润，雨季涨水、货物受潮、海风与浓雾都会影响船期。这里长久经营海贸，街市聚集本地船户、各地商旅与海外客人，花木、果货、手工艺和食肆同样构成城中生计。</p><p>港民传说五位仙人乘羊赠穗，五羊港因而得名。这是当地传说，不代表真正的超自然神明已经登场，也不能直接等同于朝廷所称的神官。祠庙、寺院、海神信俗与海外客商的礼拜传统并存；信仰也与施粥、节庆、学问和邻里互助相连。各家饮食、仪式与习惯不尽相同，商会需要学会协调。</p><p>货街的小事由有名有姓的市民亲自请求。节俗邀请、其他商会的问题、商会要务和国家危机，统一由四位亲信汇报。亲信个人支线对话留待后续展开；日常来访时仍可主动向陈守衡求助。</p><p>宗教相关选择只影响现有的官府、商誉、人手和银库；不设宗教数值，也不以信仰本身区分善恶。</p><p>第一轮远航带回海客、香料样品与初步海道记录；第二轮船队刚离港，肩负送使、通好与贸易任务。会首的生意从接驳水粮、供货契约和消息往来开始，并不等同于指挥朝廷船队。未来会有几次远航、能到多远，尚未确定。</p><p>首航带回的海图草卷、船队针路簿与零散海道记录尚未编定成书，也没有正式书名。其间记有已知港湾、岛礁和辨识标志，但部分位置与针路仍待核验，未探明的海域暂且留白。校勘、领航与候风，都要花费银钱和人手。</p><p>特许带来利钱，也带来责任：行商要报关纳税、承保船货、代递海客文书；同行倒歇时，还可能被要求分担旧债。头上是衙门，身边是同行，门外是逐利的海客。</p><p>在大周，人人都能修仙：进入门派修习学问，再选择参加考学。考学入仕、进入朝廷任职，被称作“飞升”；任职者被称为神官或神仙。这些称谓不意味着成为超自然神明。真正如神一般的存在暂未登场，门派、考试与官阶的具体制度仍待展开。</p><p>你曾在门派学习，却在这一次飞升考学中落第。返乡原是为了休息，不料父母将商会托付给你。第二轮远航刚刚启程，你从失意的求学者，成了必须面对货账、船期与生计的新任会首。失败的具体原因、所学门派与未来是否再考，暂不写死。</p><p>你是家族行号的新任会首，并非整个公行的最高领袖。父母在混乱中远走海外，把印信、未结清的生意和四位亲信留给你。谁在追索旧账、父母为何离开，都还没有答案。</p><p>海贸的繁华也养出了画坊与供瓷铺。昌南是白瓷产地：窑口先把白瓷烧好，再运到五羊港。港内工匠按客样加彩，随后送往浈江南岸炉房再次烘烧，验货装箱后远销。订制新器形需先向昌南订烧白瓷；港内加彩不必送回昌南。海外蓝料试烧青花则由昌南窑口办理，与五羊港白瓷加彩的工序分别处理。茶丝订货、海隼银币和御用图册带来机会；宫廷垫银、滚息旧债、海外追索与货街火灾，却可能吞掉多年积累。名为“私运军器”的成瘾禁运军器又把保商推入禁货风暴。</p><p>官府并非永远维护旧特许。新埠、远航和海客势力变化，都可能迫使十三行重新选择立场。</p><p>本作以现实十三行制度及广府民俗为创作原型，人物、国家、地理与事件发展均为虚构。官府仕途、官家权力更替与门派考学支线尚待展开。</p></details><details id="calendar"><summary>节俗历与时间规则</summary><p>大周五羊港沿用十二月节俗历：元宵、波罗诞、天后诞、金花诞、端午、鲁班诞、乞巧、中秋、重阳、秋收酬神、冬至、年末洗邋遢。这些节俗借鉴广府文化，并融入架空港城，不对应现实年代。</p><p>每次日常选择推进半个月。一次性剧情仅出现一次，日常事务至少相隔六个月；第二年起，部分后续故事须有此前选择才能出现。歇业或失败续接会筹备半年，从原日期向后推进六个月再开张；筹备不计入经营纪录。续接保留经历，完整重开才返回第一年正月。普通贸易与亲信事件按条件随机出现；对应月份的节俗有35%概率出现，每月最多一次。时局大事在经营满3、9、12、18……个月时触发，交替间隔3或6个月。全新重开的首次时局大事固定为诸道船工罢役，后续从未经历事件中随机抽取；歇业或失败续接保留已发生记录，续接首个事件明确排除船工罢役。现有事件用尽后暂不再触发，避免重复。</p></details><details id="people"><summary>四位亲信 · 人物簿</summary><p id="reportingRules">各项买卖仍由会首定夺，亲信分工核办、汇报。节俗邀请、其他商号及公行事务由四位亲信按职责转呈；寻常百姓的小事，由具名市民直接请求。跨越数项业务时由亲信合办，不必每件小事都经过四人。</p><div id="npcList"></div></details><footer><span>v0.6.31 · 来报人姓氏</span><span id="best"></span><span><button data-newrun onclick="if(confirm('歇业将结束本次经营，并承接此次结局重新起业。是否继续？'))reset()">歇业</button> <button data-newrun data-restart onclick="if(confirm('重开将清除当前进度、结局传承与最高纪录，从首次故事和 0 个月开始。是否继续？'))restartFromZero()">重开</button></span></footer></main><script>
+const names=['官府','商誉','人手','银库'];
+const events=[["行商掌柜","茶","新茶抵穗，海客要求锁定整季价格，才肯预付定金。","随行就市",[0,-8,0,12],"签下长约",[0,12,5,-10]],["码头管事","舟","浈江货船扎堆，要加钱雇熟手赶装吗？","按序装船",[0,-10,-8,6],"加钱雇工",[0,8,14,-14]],["捐务经办","印","官府邀商家出资修堤。领衔认捐可获体面，却是一笔大开销。","量力少捐",[-10,5,0,5],"领衔认捐",[16,8,0,-18]],["通事","言","外商认为绸缎颜色不符，契约译文也有歧义。要承担换货损失吗？","坚持原约",[0,-15,0,10],"协商换货",[0,12,-6,-10]],["仓库管事","仓","旧仓漏雨。停仓修缮会错过船期，继续收货又怕货物受潮。","照常收货",[0,-8,-10,10],"停仓修缮",[0,8,10,-16]],["丝商代表","丝","织户催收尾款，但海客的货款还没到账。是否由商会垫付？","等款到账",[0,-14,-8,12],"先付织户",[0,14,8,-15]],["市舶司书吏","关","申报数目与货单不符。补齐手续，恐怕赶不上船期。","先行发货",[-16,-6,5,10],"停货重报",[14,5,-5,-10]],["伙计领班","工","伙计们已连续赶货多日，请准轮休并补发工钱。","继续赶工",[0,-8,-15,12],"轮休补薪",[0,8,12,-10]],["商会长老","会","新行号想加入联营，愿带来人手，但也要分走利钱。","守住旧局",[0,-6,-10,10],"接纳入伙",[0,10,16,-12]],["巡夜头目","灯","邻仓昨夜起火。增设夜巡可护住货栈，却要常年添支出。","暂不增支",[-6,-6,-10,8],"扩充夜巡",[8,5,12,-12]],["联营行商","契","同行提议共同抬高茶价。眼下能多赚，老客却可能另找卖家。","各凭本事",[0,10,0,-8],"联手抬价",[-6,-14,0,16]],["账房先生","算","一家行号周转不灵，求商会拆借银两。救他，可能拖累自己的账。","婉拒借款",[0,-12,0,10],"出银周转",[0,14,0,-16]],["瓷器验货师","瓷","出口瓷器出现裂釉。重烧会延误交货，赔付也不便宜。","折价交货",[0,-8,0,8],"重烧补货",[0,12,-8,-12]],["货栈东家","栈","隔壁货栈低价转租。扩大仓面，就得增加伙计与养护开支。","暂缓扩张",[0,0,-8,8],"租下货栈",[0,6,16,-16]],["海客代理","帆","老客愿订下大批瓷器，却要求延长账期。接单要压上周转银。","只收现银",[0,-10,-6,12],"接受赊期",[0,14,8,-16]],["茶叶验货师","秤","茶箱受潮了。混入好茶出货仍有利钱，但一旦发现便会砸掉招牌。","降价明售",[0,14,0,-12],"混装出货",[-8,-16,0,16]]];
+const npcs=[
+  {
+    "name": "陈守衡",
+    "role": "总账房",
+    "icon": "算",
+    "intro": "自你年幼时便在父母身旁料理商事，行中收支与日常掌理皆经他手。与你亲如家人，是你遇事总想托付的人。他盼你真正担起家业。",
+    "duty": "经手货款、定银、赊欠、借贷、工钱和经营用度；核算主营货物的本钱与收益，分列官家采办款、货税及代存代运账目。重大垫款与担保先由他核账，再请你定夺。",
+    "boundary": "能替你理账、提出取舍，也可接受委托作决定；最终经营责任仍在会首。"
+  },
+  {
+    "name": "梁渡",
+    "role": "码头总管",
+    "icon": "舟",
+    "intro": "与码头伙计一起长大，被众人拥护为领头人，也是父母离开时留给你的可靠帮手。接掌商行之前，你与他并无交集。你需要他组织人手，他需要商行给伙计活计与出路。他盼着拥有自己的船，让跟过他的人有个着落。",
+    "duty": "经手雇工、轮班、装卸、货物交接、仓房与船具修缮、运输安排；汇报工伤救急、欠薪、停工、盐货承运及船户节庆邀请。工钱由他报人数与工日，交陈守衡核账。",
+    "boundary": "代表伙计向你说话，但不能自行调动全港船户；没有权力放船出港，也不能强扣民船。"
+  },
+  {
+    "name": "沈知微",
+    "role": "通事",
+    "icon": "言",
+    "intro": "受过你父母的恩惠，熟悉海客言语与海外往来。父母去了海外，他却留下应对乱局；与你一样，肩上压着来不及问清的托付。目前只有他能联系上你的父母。",
+    "duty": "经手海客接洽、议价传译、订单与契据核译、海外香料及染料来货消息、海外追款和父母书信。盐商及其他商号托来的合作请求，也可由他核明后汇报。",
+    "boundary": "能够联络、核译与传话，不代表能保证每一封消息及时、完整；正式官面呈递由陆怀章接办。"
+  },
+  {
+    "name": "陆怀章",
+    "role": "商会参议",
+    "icon": "印",
+    "intro": "出身官宦家庭，与你自幼相识。门第、仕途与家声，是陆家看重的事；你们的亲近，也因此有了难以说出口的顾虑。他熟悉官面规矩，却不能替官府作主。",
+    "duty": "经手行照与担保手续、船货报验文书、官家采办交涉、征调通知、诉状与申诉，以及公行议事、同行纠纷和官面节庆邀请。账目由陈守衡核实，船货由梁渡核点，海客文书由沈知微核译。",
+    "boundary": "负责交涉与呈递，不得自行征税、发照、改盐法或批准放船。与官家的交情也不能替代手续。"
+  }
+];
+const personal=[
+['陈守衡 · 总账房','算','旧账中有一笔来路不明的银款。父亲离开前，只叮嘱我不要急着动它。','封存待查',[0,4,0,-6],'用于周转',[-6,-4,0,10]],
+['梁渡 · 码头总管','舟','会首，码头伙计病了还不敢请假。给他们设一笔救急钱，今后才有人替我们撑船。','暂缓拨款',[0,-4,-8,6],'设救急钱',[0,6,8,-10]],
+['沈知微 · 通事','言','海外来信只有半页，提到父母仍在躲避追查。要花钱托船长寻找下落吗？','等下一封信',[0,-3,0,6],'托人寻访',[0,6,0,-8]],
+['陆怀章 · 商会参议','印','同行闭门议事，却没请我们。此时登门示好，可能欠下一笔人情。','保持距离',[-6,0,0,4],'登门探问',[8,4,0,-8]]];events.push(...personal);
+const milestones={
+20:{title:'浈江罢役',npc:1,text:'码头工人集体停工，要求补发工钱。武装巡队正在集结。梁渡压低声音：强行开栈会把冲突变成血案；议和需要至少 25 银库。',choices:['请巡队强行开栈','动用银库议和'],cost:25,resource:3,safe:1,delta:[-8,12,10,-25],death:'血色码头',detail:'强行复工引发冲突，货栈被焚。商会在罢工浪潮中解体。'},
+30:{title:'联行反抗',npc:3,text:'几家大商会联合抵制官府新征，逼你签下拒缴文书。陆怀章提醒：公开领头可能被封行；独立斡旋需要至少 30 商誉，才能让各方听你说话。',choices:['凭商誉居中斡旋','签字领头抗征'],cost:30,resource:1,safe:0,delta:[-10,-15,5,-8],death:'联行覆灭',detail:'抗征名单落入官府手中。商会被封，同行来不及援救便各自散去。'},
+50:{title:'变革之潮',npc:2,text:'地方易帜风波蔓延，局势骤变。沈知微带回急信：港口即将封锁。护送伙计和账册撤离需至少 30 人手；留下守仓，可能被卷入双方争夺。',choices:['留守货栈等待局势','组织撤离，异地复业'],cost:30,resource:2,safe:1,delta:[-15,10,-20,-15],death:'风暴中的孤行',detail:'港口陷入争夺，货栈与账册一同毁于战火。你没能保住这份家业。'}};
+
+
+// Fictional setting: Zhou, ruled by the Wu imperial house. No real-world chronology.
+const worldTrade=[
+['陆怀章 · 特许行照','印','朝廷准许十三行承办海外买卖，由市舶司核验行照。陆怀章报称，官府要求复核本行家业与担保人，手续未齐之前不得承接新船。','拖延复核',[-10,0,0,8],'备册呈验',[10,3,-3,-8]],
+['陈守衡 · 保商税饷','算','你为外洋船担保的税银已经到期，分销行却迟迟不交。依照行规，保商必须先垫。','催款不垫',[-12,-5,0,10],'先垫税银',[8,7,0,-14]],
+['沈知微 · 公行议价','契','各行刚议定这批丝茶的货价，一位海客却想私下加价包货。沈知微提醒，眼前虽有进项，背约却会伤及同行信用，也可能招来公行追问。','私下成交',[-7,-9,0,14],'遵守公议',[3,8,0,-6]],
+['梁渡 · 落货填册','舟','入港货船多出一批未登记的箱笼。船主愿付额外搬运钱，只求不写进落货册。','收钱漏记',[-12,-5,0,12],'逐箱登记',[8,4,-4,-5]],
+['陈守衡 · 公所基金','银','一家行号倒歇，公行催各家分摊欠债。我们若不出钱，旧债风波可能拖累全港信用。','拒绝分摊',[-5,-10,0,8],'缴入公所',[4,8,0,-12]],
+['陆怀章 · 船货分承','印','熟客要把整船货都交给你。公行却规定部分货物必须分给同行承办。','独揽全船',[-6,-10,-4,15],'照规分承',[4,8,3,-6]],
+['沈知微 · 远航采办','帆','官府的远航船队正招募供货行，采办丝帛、瓷器与船材。承办能结识官面，却要先垫银。','专做民间买卖',[-3,4,3,5],'承接船队采办',[12,3,-6,-12]],
+['梁渡 · 同行争泊','桨','另一家行号抢占泊位，声称背后有官府撑腰。伙计们要去讨个说法。','带人强争',[-8,-3,-8,8],'请公行调停',[4,6,0,-6]],
+['陆怀章 · 代递文书','文','海客船主递来一封申诉，想请官府过问货款纠纷。照港中规矩，须由行商代为呈递；陆怀章已核过译文，请你决定是否具名转呈。','压下申诉',[4,-10,0,5],'核实后代递',[-4,8,-3,-4]],
+['陈守衡 · 新行入会','算','新行号请求加入公行，愿缴公所费用。旧行怕生意被分走，要你表态。','支持旧行排斥',[3,-8,-4,6],'赞成依规入会',[-3,8,7,-4]]];events.splice(0,16,...worldTrade);
+
+
+const seaTradeStories=[
+['沈知微 · 御绘誊册','画','官府要将远航图稿誊绘成册，指定我们采办纸墨、聘请画工。图稿若泄露，承办行也要担责。','婉拒承办',[-5,3,0,4],'立密约承办',[10,5,-4,-10]],
+['沈知微 · 外销画坊','笔','海客想买描绘五羊港街市的画册，却要求画师按异域审美改样。画坊问你要不要接单。','坚持原样',[0,5,0,-4],'另开照样订造画册',[0,-3,-4,10]],
+['陈守衡 · 海客订瓷','瓷','海客拿来器形样稿订购瓷器，却只付少量定金。供瓷掌柜请商会垫银，先向昌南订白瓷，再由五羊港工匠加彩烘烧样器。','收足定金再订',[0,-4,0,5],'垫银先做样器',[0,8,-4,-10]],
+['梁渡 · 茶路争货','茶','外洋茶价上涨，同行抢收新茶。提前包下茶园能锁住货源，但会占住整季周转银。','分批采购',[0,-3,3,5],'预付包园',[0,8,-3,-10]],
+['沈知微 · 丝缎花样','丝','海客送来新花样，要织户改机赶制。老师傅怕旧订货失期，请你拿主意。','先交旧单',[0,6,3,-4],'改机接新单',[0,-5,-6,12]],
+['陈守衡 · 海隼银币','银','海客带来海隼纹银币付款。各批成色不一，按枚照收省事，验银折算则会耽误交货。','按枚照收',[0,-5,0,9],'验银折算',[0,6,-3,-4]],
+['陆怀章 · 宫廷珍玩','匣','官家那边催办海外珍玩，采买银钱却还未拨下。陆怀章报来清单：若先行采办，价款便要从本行银库垫出，何时偿付尚无准信。','请拨银再采',[-8,0,0,7],'先垫银采办',[12,0,-3,-13]],
+['陈守衡 · 滚息旧债','算','同行借海客的银款滚息不止，如今请求公行接手偿债。垫银能稳住信用，却会牵动自家银库。','拒认额外利息',[-5,-7,0,7],'分摊议和',[4,8,0,-13]],
+['沈知微 · 海外追债','信','欠款海客已远航。当地讼庭愿受理，但译契、旅费都要先付，即使胜诉也未必追回银款。','折价转让债契',[0,-4,0,7],'托人越海追索',[0,8,-3,-10]],
+['梁渡 · 饼炉邻火','火','货街饼铺走火，风正吹向我们的仓檐。拆掉临街棚屋可以隔火，却要赔偿街坊。','只守自家仓门',[0,-7,-8,6],'赔银拆棚隔火',[0,8,5,-12]],
+['梁渡 · 水上油火','水','浈江涨水，灯油桶在邻仓漂散。若不立即拦住，水面火势可能顺船排蔓延。','先抢自家货',[0,-8,-5,8],'组织截油疏船',[4,8,-6,-9]],
+['陆怀章 · 夹带禁货','封','你担保的海船被疑夹带未经准许外运的军器。船主愿给封口银，承诺不让货进你的仓。','收银不问',[-14,-10,0,14],'封存报验',[9,5,-4,-7]],
+['沈知微 · 商馆围困','粮','禁货案牵连海客居停的商馆，官府封住出入。沈知微报称，馆内海客与雇工都缺粮水；本行负责接洽，是否具名请准送入水粮？','不再过问',[3,-8,-3,4],'具名请准送粮',[-5,8,4,-6]],
+['陆怀章 · 新埠争议','港','海客请求另设通商埠，绕过公行交易。同行邀你联名阻止，散商却希望能自行接单。','联名保住专营',[7,-8,0,7],'支持试办新埠',[-7,9,5,-6]]];events.push(...seaTradeStories);
+
+
+const voyageStories=[
+['沈知微 · 二航寄信','信','第二轮远航刚刚出发，尚有接驳船追送公文。你想托船寻找父母，但不能保证信能送到。','暂候家书',[0,-3,0,5],'付资托信',[0,6,0,-7]],
+['梁渡 · 候风水粮','帆','接驳船正在外港候风，船主催你减少淡水、多装货。火长提醒，顺风迟来几日便可能缺水。','添装货箱',[0,-5,-7,10],'补足水粮',[0,6,5,-9]],
+['陈守衡 · 香料来价','香','首航带回的香料样品引来买家追问。新船还在海上，现在预订可锁价，也可能等不到货。','小批现货',[0,3,0,4],'预付订香',[0,8,-3,-10]],
+['梁渡 · 海外硬木','木','首航带回的硬木坚密，匠师却不熟悉它的脾性。试制新货要耗料，直接转卖则少赚工艺钱。','转售木料',[0,-3,0,8],'资助匠师试作',[0,7,5,-9]],
+['沈知微 · 海蓝瓷料','瓷','供瓷掌柜拿到少量海外蓝料，想送到昌南窑口试烧青花样器。新料呈色尚未摸清，请商会承担一笔小样试烧费用。','沿用旧料',[0,-3,3,5],'拨银试窑',[0,8,-3,-9]],
+['沈知微 · 击掌议价','契','海客提出当面议价、击掌为约。通事担心双方对成色和秤制理解不同，建议先写清契据。','立即击掌成交',[0,-5,0,8],'验货立契再议',[0,7,-3,-4]],
+['陆怀章 · 回赐采办','印','归国使者带走的回赐比献礼更丰厚。官员说这是国体，账房却担心垫银难收。','请先拨付银款',[-7,0,0,6],'承办回赐物资',[10,3,-4,-12]],
+['梁渡 · 舱壁修缮','锤','配货船的一道隔舱板渗水。修理会误了接驳，但不修便可能让一处漏水殃及更多货舱。','先航再修',[0,-5,-8,10],'停船修舱',[0,6,6,-10]],
+['沈知微 · 首航海图','图','首航带回的海图草卷记下部分港湾与针路，仍有待核验。图师请你资助抄校，未探明的海域暂且留白。','暂用已有草本',[0,-3,0,5],'请老火长校勘',[0,8,4,-10]],
+['梁渡 · 针路辨伪','针','有人出售所谓通往远海的捷径图，连绘图者都说不清。老火长要求与首航记录逐段核验。','高价买断捷径',[0,-7,-4,-6],'核验后再议',[0,7,4,-5]],
+['梁渡 · 牵星领航','星','老火长愿教年轻水手用罗盘与牵星板辨向。学徒要离岗半月，眼下装船正缺人。','继续装船',[0,-3,-5,7],'拨银育徒',[0,5,9,-9]],
+['沈知微 · 海外见闻','书','随首航归来的书手整理港市、物产与风俗，想借账房抄写。资助成册，也许能少吃交易的亏。','只问货价',[0,-3,0,5],'资助见闻录',[0,8,3,-7]],
+['陆怀章 · 远航议论','文','有人称远航能通好护商，有人担忧礼物与船费压住国用。衙门让行商呈报真实开销。','只报盛况',[8,-6,0,4],'如实呈送账目',[-4,7,0,-3]],
+['梁渡 · 海盗传闻','舟','首航曾整顿过的航路又传出劫掠消息。接驳商船可付费结伴，独行则能赶上早市。','独船赶市',[0,-4,-8,11],'结伴护航',[0,6,5,-10]]];events.push(...voyageStories);
+
+
+const portLife=[
+['陆怀章 · 五羊赠穗','穗','街坊修整五羊祠，说五位仙人曾乘羊赠穗，祝此地免于饥荒。乡老请商会捐一笔修祠钱，也有人提议先买米济困。','捐米济困',[0,8,4,-8],'资助修祠',[3,7,0,-8]],
+['沈知微 · 海客礼拜','灯','一批海客希望借空仓作临时礼拜处。邻铺担心人多拥挤，海客愿遵守防火与出入约定。','婉拒借仓',[0,-5,0,4],'订约借用',[0,8,-3,-5]],
+['梁渡 · 寺院施粥','碗','浈江涨水，流离的船户暂住寺院。僧人请商会帮忙运粮，但今日的货船也等着装卸。','优先装货',[0,-6,-3,8],'拨船运粮',[3,8,-5,-7]],
+['沈知微 · 同席异食','席','本地香客与海客来商会谈生意，饮食禁忌各异。厨房提议分灶备餐，免得席间失礼。','沿用旧宴菜单',[0,-7,0,6],'问明习惯分灶',[0,9,-3,-6]],
+['陆怀章 · 巡游与通行','旗','祈安巡游要经过货街，恰逢海客运货。两边都盼我们让路，若排好时段便能各行其事。','先保货运',[0,-6,-3,8],'协调错时通行',[3,7,-4,-4]],
+['沈知微 · 经卷译抄','书','一位远来教士与本地学人借用书房比对经卷。资助纸墨可结识通事人才，但不能马上带来订货。','只接商业译契',[0,-3,0,6],'供纸墨与书房',[0,7,5,-8]],
+['梁渡 · 祈安与修船','舟','出海前伙计们想去海神庙祈安，船匠又报桅索磨损。所备银钱只够先办一件，你如何安排？','先办祈安仪式',[0,5,-7,-4],'先修桅索再祈安',[0,-3,8,-7]],
+['陈守衡 · 祠产争账','算','祠中管事与租户对租银数目各执一词，邀你见证旧账。贸然站队省事，逐项核账却要耽误本行事务。','支持熟识管事',[3,-7,0,5],'核账再作见证',[0,8,-4,-4]],
+['梁渡 · 雨季仓脚','雨','五羊港连日湿热，浈江水位上涨。低处茶箱已有潮气，搬往高仓要额外付脚钱。','等雨停再搬',[0,-6,-5,8],'立刻移往高仓',[0,6,5,-9]],
+['沈知微 · 百越果货','果','果农送来荔枝与龙眼，海客想带上远航船。鲜果经不起久航，改做干果又要另加工钱。','只卖港内鲜果',[0,4,0,4],'试做远航干果',[0,7,-4,-7]],
+['陆怀章 · 港口义学','文','义学想教船户子弟识字算账，请商会支持纸笔。账房说学成后可招作学徒，但眼下是笔支出。','暂缓资助',[0,-4,0,6],'拨银助学',[0,7,6,-9]],
+['梁渡 · 河口浓雾','雾','浈江河口大雾，岛洲与浅滩难辨。老船户愿领航，需额外付费；自行抢潮可省银，却容易搁浅。','自行抢潮',[0,-5,-8,10],'请熟水道者领航',[0,6,6,-9]]];events.push(...portLife);
+
+const monthNames=['正月','二月','三月','四月','五月','六月','七月','八月','九月','十月','冬月','腊月'];
+const seasonal=[
+['沈知微 · 正月元宵','灯','街坊筹办元宵灯会，邀商会出资挂灯。伙计也盼着轮休看灯，偏偏新春订货正催得紧。','留人赶货',[0,-5,-6,9],'出资轮休',[0,8,6,-10]],
+['陆怀章 · 二月波罗诞','鸡','南溟海神庙波罗诞将至，商旅赶庙会、买波罗鸡讨好意头。同行邀你合办货摊，要占用一笔周转银。','守住本行',[0,-4,4,5],'合办庙会货摊',[4,8,-4,-8]],
+['梁渡 · 三月天后诞','舟','沿江船户筹办天后诞祈安，盼商会出资备祭。若让船工赴会，这批货便要推迟装船。','照常装船',[0,-5,-6,8],'资助船户赴会',[0,8,6,-9]],
+['沈知微 · 四月金花诞','花','附近街坊筹备金花诞，来借棚架和绸布布置诞会。借出物料会挤占货栈，但也能结下街坊人情。','婉拒借料',[0,-5,0,6],'借料搭棚',[0,8,-3,-6]],
+['梁渡 · 五月端午','桨','龙舟鼓响，村中请商会赞助龙舟饭。伙计也想回乡扒龙舟，海客却催着交货。','扣人赶船',[0,-6,-8,10],'轮班赴龙舟会',[0,9,7,-11]],
+['陈守衡 · 六月鲁班诞','尺','木匠师傅过鲁班先师诞，约好停工聚会。仓内货架等着修，给足工钱另约工期，还是催他们赶工？','催促赶工',[0,-5,-6,8],'尊重工期',[0,7,5,-8]],
+['沈知微 · 七月乞巧','巧','姑娘们为摆七娘赶制巧艺，向商会订购丝线和纸料。愿不愿让出一批材料，支持这场乞巧会？','按市价售料',[0,-4,0,8],'让利供料',[0,10,3,-9]],
+['陈守衡 · 八月中秋','月','伙计盼着领饼归家团圆，老客也等着中秋礼。银库吃紧，是只送客商，还是先顾自己人？','厚礼送客商',[3,6,-7,-5],'给伙计月饼假期',[0,-3,10,-5]],
+['梁渡 · 九月重阳','山','伙计们相约重阳登高，也想探望家中长辈。但码头临时多了一船急货，轮休便需雇人顶班。','接急货不放假',[0,-5,-7,10],'雇人轮休',[0,6,8,-10]],
+['陆怀章 · 十月秋收酬神','谷','合办村落秋收后筹办酬神戏，邀商会助资。各村日子不同，这次恰与收账撞期。要亲自赴约吗？','先去催账',[0,-5,0,8],'备礼赴约',[3,8,-3,-8]],
+['陈守衡 · 冬月冬至','碗','街坊说冬大过年。伙计想早收工吃团圆饭，账房却还有一批货单未清。','按时辰清完账',[0,-4,-6,7],'收工做冬',[0,6,8,-8]],
+['梁渡 · 腊月洗邋遢','扫','年廿八，洗邋遢。旧仓该清扫除尘，年货却还在进出。停半日彻底清仓，还是先把生意做完？','继续接年货',[0,-4,-7,10],'停仓清扫',[0,5,8,-9]]];
+function calendarTime(){return state.calendarOffset+state.turn}
+function chineseYear(n){if(n<10)return '零一二三四五六七八九'[n];if(n<20)return '十'+(n%10?'零一二三四五六七八九'[n%10]:'');if(n<100)return chineseYear(Math.floor(n/10))+'十'+(n%10?chineseYear(n%10):'');return String(n)}
+function calendarLabel(){const t=calendarTime(),y=Math.floor(t/12),m=monthNames[Math.floor(t)%12],half=t%1===0?'上半月':'下半月';return '第 '+(y+1)+' 年'+m+half+' · 承熙'+chineseYear(y+5)+'年'+m+half}
+function currentEvent(){return state.cardType==='festival'?seasonal[Math.floor(calendarTime())%12]:events[state.i]}
+function pickCard(){
+const month=Math.floor(calendarTime());const canFestival=state.festivalMonth!==month;
+state.cardType=canFestival&&Math.random()<0.35?'festival':'ordinary';
+if(state.cardType==='festival')state.festivalMonth=month;else next();
+}
+function duration(n){const years=Math.floor(n/12),months=n%12;return (years?years+'年':'')+(months?months+'个月':years?'':'0个月')}
+const national=Object.values(milestones);
+national[0].title='诸道船工罢役';national[0].text='各地船工响应停工，浈江运输也已中断。梁渡警告：强行开栈可能酿成血案；安排补发工钱、召集船户议和至少需要 25 银库。';
+national[1].title='各道商会抗征';national[2].title='易帜风潮';
+national.push(
+{title:'诸港税则改制',npc:3,text:'朝廷重订诸港税则，市舶司奉令核验船货与旧照。陆怀章说：借旧凭据私运一旦查出便会封行；换领凭据至少需要 20 银库。',choices:['缴银换据','持旧据抢运'],cost:20,resource:3,safe:0,delta:[8,3,0,-20],death:'关卡封行',detail:'船货凭据被查出问题，市舶司扣住船货、停办本行手续，商会失去继续经营的资格。'},
+{title:'诸道欠银风潮',npc:0,text:'各地商号拖欠货银，债主聚到门前催讨。陈守衡提醒：仓银不足，承诺立即全部还清会激化冲突；分期协商至少需要 25 商誉。',choices:['承诺立即还清','凭信用分期偿还'],cost:25,resource:1,safe:1,delta:[0,-12,4,-8],death:'债主围行',detail:'还款承诺落空，债主涌入账房追讨，商会被迫倒歇。'},
+{title:'诸道征调令',npc:1,text:'各地紧急征调运船与脚夫。梁渡建议抽调熟手分批运送，但至少需要 25 人手；强扣民船凑数，可能引发沿江反抗。',choices:['派熟手分批承运','强扣民船凑数'],cost:25,resource:2,safe:0,delta:[8,-3,-15,-5],death:'民船之乱',detail:'被扣船户联合反抗，货栈遭围堵，商会无法再开门。'});
+
+
+national.push(
+{title:'诸行债务追征',npc:0,text:'数家行号倒歇，官府要求公行共同偿还外债。陈守衡说：签不定数目的保结会拖垮家业；拿出至少25银库，才能谈分期清偿与各行应偿数目。',choices:['签下无定数保结','出银谈分期清偿'],cost:25,resource:3,safe:1,delta:[5,4,0,-20],death:'连债吞行',detail:'无止境的追征耗尽家底，债主与差役搬走了最后一本货账。'},
+{title:'沿海禁货风暴',npc:3,text:'未经准许外运的军器流经诸港，市舶司奉令清查船货，凡具保的行商都须呈册。陆怀章提醒：隐匿船册等于替人顶罪；具册呈验至少需要25官府关系，才能争取限期自查。',choices:['具呈请限自查','藏起担保船册'],cost:25,resource:0,safe:0,delta:[-10,6,-5,-8],death:'保商问罪',detail:'隐匿船册的消息败露，官府以包庇禁货之名查封行号。'},
+{title:'海贸开埠新令',npc:2,text:'朝廷下令另开诸港，各地市舶司奉令办理，十三行旧有的专营地位动摇。沈知微说：调走货路、重订客商契约至少需要25商誉；煽动封港阻令可能引来镇压。',choices:['发动封港抗令','改约转向新港'],cost:25,resource:1,safe:1,delta:[-5,-10,-4,-7],death:'旧港残旗',detail:'封港抗令遭到镇压，商会失去行照与客商，旧日特许再也护不住你。'});
+
+
+
+const citizenRequests={
+'外销画坊':['林墨生 · 画师','会首，海客要我照他们的喜好改画册。我怕老客嫌变了样，您愿意让我另开一套照样订造画册吗？'],
+'海客订瓷':['陶锦娘 · 供瓷掌柜','会首，这单得先向昌南订好白瓷，运到五羊港后请画工加彩，再送浈江南岸的炉房烘烧样器。海客只付了一点定金，您肯垫银先做吗？'],
+'丝缎花样':['何织云 · 织坊师傅','会首，新花样要改机才能织，可旧单还没交完。您准我先交旧货，还是现在改机接新单？'],
+'海隼银币':['邓砚平 · 验银师','会首，这几袋海隼银币成色不一样。让我逐批验过再折价吧？就是会耽误些交货时辰。'],
+'饼炉邻火':['苏炳成 · 饼铺店主','会首，我铺里的炉火窜上棚了！拆棚能隔火，可街坊的损失我赔不起。您肯出银帮忙吗？'],
+'水上油火':['黎水生 · 沿江船户','会首，油桶漂到船排边了，一着火就拦不住！请借些人手，跟我疏船截油吧！'],
+'候风水粮':['罗定潮 · 火长','会首，接驳船还在等风，水粮不能再挤了。请少装几箱货，让我补足水粮，成吗？'],
+'香料来价':['方馥春 · 香料掌柜','会首，首航带回的香料样品快卖光了。您肯预付订下一批吗？我先说明白，新船未归，交货还没准数。'],
+'海外硬木':['冯作舟 · 木匠','会首，这批海外硬木好，可我还没摸透它的性子。您肯给我一点料试作，还是整批转卖？'],
+'海蓝瓷料':['陶锦娘 · 供瓷掌柜','会首，这点海外蓝料是要送昌南试烧青花样器的，不是港里白瓷加彩的那道工序。料性没摸清，您愿意出小样试烧钱，还是照旧用熟料？'],
+'击掌议价':['萨林 · 海客','会首，这批货咱们击掌定价如何？若您还要核成色、秤制，我也愿等您把契据写清。'],
+'舱壁修缮':['冯作舟 · 修船匠','会首，我查到隔舱板渗水了。请准我停船修好，误了接驳总比海上出事强。'],
+'首航海图':['叶绘川 · 图师','会首，这是首航带回的海图草卷，有些港湾和礁石的位置还没核准。我想请老火长逐段校勘，您能拨些银钱吗？'],
+'针路辨伪':['罗定潮 · 火长','会首，那张捷径图连来路都说不清！您若真想买，请先让我拿首航记录逐段核验。'],
+'牵星领航':['阿棠 · 水手学徒','会首，老火长肯教我看罗盘、用牵星板，可我要离岗半月。您准我去学吗？'],
+'海外见闻':['许闻洲 · 随航书手','会首，我记下了首航沿途的港市和风俗，想整理成册。能借您书房，再匀些纸墨给我吗？'],
+'海客礼拜':['萨林 · 海客','会首，我们想借空仓作临时礼拜处。防火和出入规矩都听您的，您愿意借吗？'],
+'寺院施粥':['慧澄 · 僧人','会首，寺里收留了涨水后无处落脚的船户，粮食却运不来。能借一条船、几位伙计帮忙吗？'],
+'同席异食':['余婉娘 · 厨娘','会首，今日客人的饮食禁忌不同。我想先问清楚，再分灶备餐，您肯多拨一点菜钱吗？'],
+'经卷译抄':['闻素 · 译经学人','会首，我和一位远来教士想对读经卷，也可教几个学徒外语。您能借间书房、资助些纸墨吗？'],
+'祈安与修船':['黎水生 · 船主','会首，伙计想先去祈安，可桅索也磨坏了，钱只够先办一件。您准我先修索，再带大家去庙里吗？'],
+'祠产争账':['麦安 · 祠产租户','会首，我记的租银和管事账上对不上。请您先核旧账，别只听他一面说辞，好吗？'],
+'雨季仓脚':['郑阿满 · 看仓伙计','会首，低处茶箱已经返潮了！请拨脚钱，今天就搬去高仓吧，再等怕是整批都坏。'],
+'百越果货':['何桂枝 · 果农','会首，这批荔枝龙眼新鲜，可经不起远航。您愿意只在港里卖，还是出加工钱，试做干果？'],
+'港口义学':['温知行 · 义学先生','会首，船户家的孩子想学识字算账，缺的是纸笔。您能资助一些吗？学成后也能来行里做学徒。'],
+'河口浓雾':['罗定潮 · 老船户','会首，河口这场雾把浅滩全遮住了。我熟这段水路，您付些领航钱，我带船过去，可好？']};
+for(const e of events){const topic=e[0].split(' · ')[1],v=citizenRequests[topic];if(v){e[0]=v[0]+' · '+topic;e[2]=v[1];}}
+// Festival invitations and inter-guild affairs remain confidant reports.
+const festivalReporters=['沈知微','陆怀章','梁渡','沈知微','梁渡','陈守衡','沈知微','陈守衡','梁渡','陆怀章','陈守衡','梁渡'];
+seasonal.forEach((e,i)=>{e[0]=festivalReporters[i]+' · '+e[0].split(' · ')[1]});
+
+// Ceramic trade: procurement and trials, not a mature local Guangcai industry.
+events.push(
+['陶锦娘 · 供瓷掌柜 · 白瓷验货','瓷','会首，昌南窑口送来的白瓷，有些口沿磕了，有些器形不齐。请拨人手逐件挑验吧？若整批照收，倒能便宜些。','折价整批收下',[0,-7,0,9],'逐件挑验收货',[0,7,-4,-5]],
+['麦青 · 装箱伙计 · 瓷货装船','箱','会首，瓷碗得垫好草料再装箱。船主催着装货，您准我多叫两个人包扎，还是按他说的赶紧上船？','赶船先装货',[0,-6,-4,8],'添人仔细包扎',[0,6,4,-8]]);
+
+
+// Adapted port administration; institutions here belong to fictional Zhou.
+events.push(
+['沈知微 · 接待来舶','舟','新到的海船已在指定泊处下锚，官府让本行安排接待、核对客商名册。沈知微报称，酒食与通事都需先备，后续货物买卖另行立契。','从简接待',[0,-4,0,5],'备酒食请通事',[4,7,-3,-8]],
+['陆怀章 · 定泊报验','印','海客想把船直接靠到货栈门前卸货。陆怀章已查明，船须先到指定泊处登记、候验，不能因赶船期便沿江私卸。','纵其先卸',[ -10,-4,0,9],'依规候验',[7,4,-3,-6]],
+['陈守衡 · 抽解清册','算','市舶司要核验这批入港货的品类、数量，并据此征收货税。陈守衡发现船册与货单有出入，建议先清点补册，以免交税后再起争执。','照旧册申报',[-9,-5,0,8],'清点后补册',[6,6,-4,-7]],
+['陆怀章 · 官家采买','文','官家那边要从舶来香料中采买一批。陆怀章递上清单：这是官府采买，不是把货税再收一次，数量、价款和交付凭据须另记清楚。','先交货后议款',[7,-3,0,-9],'核价立据再交',[ -4,7,0,-3]]);
+
+
+// Readable period-flavored dialogue; not a historical speech transcript.
+const citizenSpeech={"外销画坊":"会首，海客拿了花样来，要我另绘一册。我怕改了旧样，熟客不认。可否另起一册，照他的意思画？","海客订瓷":"会首，这宗瓷货，须先向昌南订白瓷，运来请画工上彩，再送浈江南岸入炉。海客的定银还差着，您可肯先垫些银子，做几件样器？","丝缎花样":"会首，新花样须改织机，旧客的货却还欠着。是先把旧货交清，还是停下来改机？请您拿个主意。","海隼银币":"会首，这几袋海隼银钱，看着相似，成色却不同。容我逐袋验明再算价钱，只怕要迟些交货。您看可使得？","饼炉邻火":"会首，不好了！我家饼炉的火蹿上棚顶了！拆棚还能隔火，可街坊的损失我赔不起。求您先出些银子，帮着救火！","水上油火":"会首，油桶漂到船排边了！一旦起火，几家船都难保。借我几个伙计，赶紧把船疏开吧！","候风水粮":"会首，船还候着风，水粮万万省不得。宁可少装几箱货，也得留足海上的口粮。请您应允。","香料来价":"会首，头回远航带来的香料，已卖得差不多了。您可要先付些定银，再订一批？只是船未归，几时交货，我还不敢说死。","海外硬木":"会首，这海外木料倒是好料，只是性子还没摸透。可否匀几块让我试做？若舍不得耗料，便整批转卖。","海蓝瓷料":"会首，这点海外蓝料，得送昌南试烧青花样器，与港里白瓷上彩不是一道活计。料性未明，您肯出些试烧银子，还是仍用熟料？","击掌议价":"会首，货在这里，咱们验明成色，议妥价钱，便击掌为约，如何？若要把秤法写进契据，我也等得。","舱壁修缮":"会首，隔舱板渗水了。容我把船停下修妥，再赶船期。海上若漏起来，可不是赔几块木板的事。","首航海图":"会首，这是头回远航带回的海图草卷，几处港湾、礁石还未核准。我想请老火长逐段校勘，可否拨些银钱？","针路辨伪":"会首，那张捷径图，卖图人连来路都说不清。莫急着付银，容我拿旧针路簿一段段核过，再作计较。","牵星领航":"东家，老火长肯教我看罗盘、使牵星板，只是要离开货栈半月。求您准我去学，学成了也好替行里出力。","海外见闻":"会首，沿途港市、物产与风俗，我都记了些。如今想誊成一册，可否借间书房，再匀些纸墨？","海客礼拜":"会首，我们想借一间空仓礼拜。几时出入、如何看守火烛，都照您的规矩办。可否行个方便？","寺院施粥":"会首，寺中暂留了些遭水的船户，米粮却运不进来。贫僧来求借一条船、几位伙计，把粮送到，救一救眼前的急。","同席异食":"东家，今日几位客人各有忌口。我先问明白，分灶做，免得席上失礼。还请多拨些菜钱。","经卷译抄":"会首，我与一位远来传教之人约着对读经卷，也愿教几个学徒说海客的言语。可否借间静室，供些纸墨？","祈安与修船":"会首，伙计们想去庙里祈安，可桅索也磨坏了，手头钱只够先办一件。容我先把索修好，再领众人去，可好？","祠产争账":"会首，我交的租银，与管事账上记的对不上。求您翻翻旧账，替我作个见证，莫只听他一面之词。","雨季仓脚":"东家，低处的茶箱返潮了！赶紧拨些脚钱，趁今日搬上高仓。再拖下去，这批茶怕要糟蹋了！","百越果货":"会首，这荔枝龙眼才摘下，鲜得很，却禁不起远路。您是在港里卖鲜果，还是出些工钱，让我们焙成干果？","港口义学":"会首，船户家的孩子想识几个字、学些算盘，苦于没有纸笔。还望相助一二；日后学成，也能到行里谋个生计。","河口浓雾":"会首，河口雾重，浅滩全瞧不见了。这段水路我走得熟，若肯付些引路钱，我便替您领船过去。","白瓷验货":"会首，昌南送来的白瓷，有的磕了口，有的器形不齐。请添几个人逐件挑过；若要整批收下，我再去压一压价钱。","瓷货装船":"东家，瓷碗须垫足草料，扎牢了才好装船。船主催得紧，您准我再叫两个人来，还是依他的话先搬上船？"};
+for(const e of events){const topic=e[0].split(" · ").at(-1);if(citizenSpeech[topic])e[2]=citizenSpeech[topic];}
+
+
+
+// Fictional report inspired by trade observations; not a Qing statute.
+events.push(['陆怀章 · 贡商分验','文','同来的两条船，一条奉使送礼，一条载货求市。陆怀章报称，市舶司要分别核验文书；海客却想将私货混入使船，省去报验。此事不能只凭口头担保。','代其混报',[-10,-5,0,9],'分册如实呈验',[6,5,-3,-5]]);
+
+const followups=[
+{e:['叶绘川 · 图师 · 校图回报','图','会首，上回您出银校勘，老火长已改正两处礁位。可否再誊几份，分给本行领船的人？','留存原卷',[0,2,0,3],'誊本分发',[0,7,5,-7]],parent:'首航海图',choice:true},
+{e:['阿棠 · 水手学徒 · 学徒归来','星','东家，承您准假，我已学会几条针路。可否让我跟老火长领一趟短程船，试试本事？','再随船见习',[0,2,3,-3],'准领短程',[0,5,7,-6]],parent:'牵星领航',choice:true},
+{e:['温知行 · 义学先生 · 义学荐徒','文','会首，蒙您资助，几个孩子已有些字算根底。可否让他们到货栈学着抄单？','再读些时日',[0,3,0,-2],'收作学徒',[0,5,8,-7]],parent:'港口义学',choice:true},
+{e:['陶锦娘 · 供瓷掌柜 · 瓷样复订','瓷','会首，上回垫银做的样器，海客已看中了。这回先交足定银，再订一批，可要接下？','只收小批',[0,3,0,5],'接下订货',[0,7,-5,9]],parent:'海客订瓷',choice:true},
+{e:['陶锦娘 · 供瓷掌柜 · 海客补银','瓷','会首，上回您坚持先收足定银，那海客如今补齐了。可要按旧样接单？','暂缓接单',[0,-3,2,3],'依约承接',[0,6,-4,8]],parent:'海客订瓷',choice:false},
+{e:['许闻洲 · 随航书手 · 见闻成册','书','会首，蒙您借室供墨，见闻已誊成初稿。可否请熟悉海路的通事再核一遍，免得误人？','先留稿待查',[0,3,0,1],'请人核订',[0,8,3,-7]],parent:'海外见闻',choice:true}];
+const eventRules=new Map();const keyOf=e=>e[0].split(' · ').at(-1);
+for(const e of events){const topic=keyOf(e);const early=['二航寄信','香料来价','首航海图','海外见闻'].includes(topic);const personalStory=personal.includes(e);eventRules.set(e,{once:early||personalStory||['海蓝瓷料','海外硬木','牵星领航'].includes(topic),max:early?12:Infinity,min:0});}
+for(const f of followups){events.push(f.e);eventRules.set(f.e,{once:true,min:12,max:Infinity,parent:f.parent,choice:f.choice});}
+// Local salt-route story: appended to preserve saved event indices.
+const saltStory=[
+{e:['陈守衡 · 盐路受阻','盐','近来盐路受阻，盐价接连上涨。陈守衡报称，本行伙食和相熟作坊都受了影响。盐商冯济川愿分出少量有据盐货，只是价钱比往日高。','暂减用度',[0,-2,-4,3],'购盐应急',[0,4,3,-7]],min:2},
+{e:['沈知微 · 盐商借仓','仓','冯济川托人求借一间空仓，存放滞留盐货。沈知微报称，须先请他出示货物来历与运销凭据，查明再另立寄存契据；本行只收仓钱，不接手卖盐。','婉拒寄存',[0,-2,0,2],'验据后借仓',[2,5,-2,-5]],parent:'盐路受阻'},
+{e:['卢阿顺 · 挑夫 · 盐路断炊','担','会首，路一封，我们这些靠肩膀吃饭的便没了活计。家里米缸见底了，求您在货栈匀些搬货的差事。我愿按日领钱，不白拿您的米。','给米解急',[0,4,1,-4],'雇来搬货',[0,6,5,-7]],parent:'盐商借仓'},
+{e:['陆怀章 · 盐路清查','册','官府追查盐路上的劫掠，也要核对沿途商号的货账。陆怀章已分开本行买盐自用、代存及雇工的记录，建议如实呈报，再替受牵连的挑夫递一份实情。','如实呈交货账',[5,0,0,-2],'附上挑夫实情',[2,6,2,-5]],parent:'盐路断炊'},
+{e:['梁渡 · 盐路复业','舟','盐路重开，官府准许查明未涉劫掠的贩夫、挑夫复业，并受理沿途额外索费的申诉。梁渡报称，冯济川想合雇运船，按契分担脚钱；本行仍只承运有据货物。','先观望路况',[0,1,1,2],'立契合办运输',[3,6,-3,-7]],parent:'盐路清查'},
+{e:['陈守衡 · 盐路结账','算','陈守衡呈上盐路账目：仓钱、脚钱和应急用度均已分列。这回各家复业，盐务仍由官府办理；本行日后是否承接有据盐货的托运，还须逐单核账。','暂不再接盐运',[0,2,2,2],'保留托运往来',[2,5,-2,4]],parent:'盐路复业'}
+];
+for(const f of saltStory){events.push(f.e);eventRules.set(f.e,{once:true,min:f.min??0,max:Infinity,parent:f.parent,delay:1});}
+function storyTime(){return (state.elapsed||0)+state.turn}
+function eligible(e){const r=eventRules.get(e),key=keyOf(e),time=storyTime();if(time<r.min||time>=r.max)return false;if(r.once&&state.storySeen.includes(key))return false;if(state.lastSeen[key]!==undefined&&time-state.lastSeen[key]<6)return false;if(r.parent){const o=state.outcomes[r.parent];if(!o||(r.choice!==undefined&&o.right!==r.choice)||time-o.time<(r.delay??6))return false;}return true;}
+function recordEvent(e,right){const key=keyOf(e);state.storySeen.push(key);state.lastSeen[key]=storyTime();state.outcomes[key]={right,time:storyTime()};}
+
+const endingTitles=[['封行停业','信用扫地','伙计散尽','银根断裂'],['官差缠身','虚名难支','冗役耗资','守银失市']];
+const fallout=[['封条仍贴在旧门上，陆怀章替你找到一间尚可落脚的小铺。','旧客拒收你的名帖，沈知微带着仅存的几封荐书陪你重新敲门。','码头已无人认你的旗号，梁渡召回几名旧伙计，陪你从一船货重新做起。','陈守衡保住最后一本账簿，与你逐户商谈旧债，换来一次重开铺面的机会。'],['官面差务拖垮了旧行，陆怀章劝你换一块低调的招牌。','承诺太多，终于无力兑现。沈知微陪你向旧客致歉，重新立约。','过度扩张留下空仓与欠薪，梁渡带着少数愿意留下的人重新开工。','囤积的银两没能换来合办，陈守衡决定陪你把生意重新做活。']];
+let state, best=0;try{state=JSON.parse(localStorage.getItem('hongStoryV2'));best=Number(localStorage.getItem('hongStoryBestV2'))||0}catch{}
+function fresh(previous=null,chapter=1){return{v:[50,50,50,50],turn:0,i:0,over:false,bag:[],intro:true,previous,chapter,done:[],last:'',ending:null,nextMajor:3,majorIndex:0,cardType:'ordinary',festivalMonth:-1,chenUses:0,chenStarted:false,terminal:false,elapsed:0,calendarOffset:0,storySeen:[],lastSeen:{},outcomes:{},seenMajor:[],pendingMajor:null,fixedFirst:chapter===1}}
+if(state&&Array.isArray(state.v)){if(!events[state.i])state.i=0;if(Array.isArray(state.bag))state.bag=state.bag.filter(i=>Number.isInteger(i)&&events[i]);}
+if(!state||![2,3,4].includes(state.version)||!Array.isArray(state.v)||state.v.length!==4||!events[state.i])state=fresh();
+if(state.version===2){state.turn*=12;best*=12;if(state.previous){state.previous.months=state.previous.years*12}state.nextMajor=state.turn+3;state.majorIndex=0;state.done=[];state.last='旧存档已换算为月份；下一次时局大事将在 3 个月后发生。';}
+
+if(!state.cardType){state.cardType='ordinary';state.festivalMonth=-1;state.last='已切换半月决策：普通事件随机出现，当月节俗有概率出现。';}
+if(!Array.isArray(state.seenMajor)){state.seenMajor=Array.from({length:Math.min(state.majorIndex||0,national.length)},(_,i)=>i);state.pendingMajor=null;state.fixedFirst=state.chapter===1&&state.seenMajor.length===0;}
+// Repair an unresolved legacy first-strike card on a continued story.
+if(state.chapter>1){state.fixedFirst=false;if(!state.over&&state.majorIndex===0&&state.pendingMajor===0)state.pendingMajor=null;}
+state.elapsed??=0;state.calendarOffset??=state.elapsed;state.storySeen??=[];state.lastSeen??={};state.outcomes??={};
+state.chenUses??=0;state.chenStarted??=false;state.terminal??=false;
+function save(){state.version=4;try{localStorage.setItem('hongStoryV2',JSON.stringify(state));localStorage.setItem('hongStoryBestV2',best)}catch{}}
+function next(){const pool=events.map((e,i)=>({e,i})).filter(x=>eligible(x.e)&&x.i!==state.i);if(!pool.length)throw Error('No eligible ordinary event');const follow=pool.filter(x=>eventRules.get(x.e).parent);const candidates=follow.length&&Math.random()<0.5?follow:pool;state.i=candidates[Math.floor(Math.random()*candidates.length)].i;}
+function major(){
+if(state.turn<state.nextMajor)return null;
+if(state.pendingMajor!==null)return national[state.pendingMajor];
+if(state.seenMajor.length>=national.length){state.lastMajor=state.seenMajor.at(-1);state.seenMajor=[];state.fixedFirst=false;}
+const available=national.map((_,i)=>i).filter(i=>!state.seenMajor.includes(i)&&!(state.chapter>1&&state.majorIndex===0&&i===0)&&!(state.seenMajor.length===0&&i===state.lastMajor&&national.length>1));
+if(!available.length)return null;
+const id=state.fixedFirst&&!state.seenMajor.length?0:available[Math.floor(Math.random()*available.length)];
+state.fixedFirst=false;state.pendingMajor=id;state.seenMajor.push(id);save();return national[id];
+}
+function reporterMark(name){const person=name.split(' · ')[0].trim();if(['阿棠','慧澄','闻素','萨林'].includes(person))return person;const compound=['欧阳','司马','上官','诸葛','司徒','司空','夏侯','皇甫','尉迟'];return compound.find(x=>person.startsWith(x))||Array.from(person)[0]||'客'}
+function effects(a){return a.map((n,i)=>n?names[i]+(n>0?' ↑':' ↓'):'').filter(Boolean).join(' · ')}
+function finish(title,detail,bridge){state.over=true;state.ending={title,detail,bridge};state.last=detail}
+function boundary(){const i=state.v.findIndex(v=>v<=0||v>=100);if(i<0)return;const high=state.v[i]>=100?1:0;finish(endingTitles[high][i],`${names[i]}失衡，行中生意再难维持。`,fallout[high][i])}
+function delegateChen(){
+if(state.intro||state.over||state.terminal)return;
+state.chenUses++;const first=!state.chenStarted;state.chenStarted=true;
+if(state.chenUses>=6){finish('远海无归','陈守衡曾期待你能真正担起这份家业。一次次托付之后，他终于不再劝你。他安排船只将你送往海外，收走了你返回大周的凭证。商会还在，你却再也无法回去。','');state.terminal=true;save();render();return;}
+const m=major();let decision;if(m)decision=Boolean(m.safe);else{const e=currentEvent();const score=a=>state.v.reduce((sum,v,i)=>{const n=v+a[i];return sum+(n<=0||n>=100?-10000:Math.min(n,100-n));},0);decision=score(e[6])>=score(e[4]);}choose(decision);
+const note=first?'陈守衡替你接过账册：“这次我替你拿主意，下次你要自己想清楚。”【陈守衡支线已开启，后续剧情待续】':state.chenUses>=4?'陈守衡久久没有合上账簿：“我能替你办事，不能替你活一辈子。”【依赖已深；累计第6次委托将触发不可续局结局】':'陈守衡办妥了这件事，却仍让你留下，听他解释其中的利害。';state.last+=' '+note;save();render();}
+function render(){
+clearPreview();
+document.querySelector('#chen').disabled=state.intro||state.over||state.terminal;
+document.querySelector('#chen').textContent='拜托陈守衡（已委托 '+state.chenUses+'/6 次）';
+document.querySelector('#chenStatus').textContent=state.chenStarted?'陈守衡支线 · 已开启，后续待续。委托不保证渡过银钱或人手不足的危机。':'拿不定主意时，可以拜托陈守衡。首次委托开启支线；累计6次将触发不可续局结局。';
+document.querySelectorAll?.('[data-newrun]').forEach(b=>b.disabled=state.terminal&&!b.hasAttribute('data-restart'));
+
+document.querySelector('#stats').innerHTML=state.v.map((v,i)=>`<div class="stat">${['印','契','工','银'][i]} ${names[i]}<div class="bar"><div class="fill" style="width:${v}%;background:${v<20||v>80?'#cf8067':'#c3a66c'}"></div></div><span>${v}</span><span class="delta" id="delta-${i}" aria-label="选择影响"></span></div>`).join('');
+document.querySelector('#year').textContent=`第 ${state.chapter} 次起业 · ${calendarLabel()} · 已经营 ${duration(state.turn)}`;document.querySelector('#forecast').textContent=major()?'官商急报已到 · 处置后再理日常事务':`下次时局大事：${state.nextMajor-state.turn} 个月后`;document.querySelector('#best').textContent=`最长经营 ${duration(best)}`;
+document.querySelector('#play').style.display=state.over||state.intro?'none':'block';document.querySelector('#end').style.display=state.over?'block':'none';document.querySelector('#prologue').style.display=state.intro?'block':'none';
+document.querySelector('#log').textContent=state.last||'每次日常决策推进半个月；普通事件随机，当月节俗概率出现，每月最多一次。时局大事间隔 3、6 个月交替发生。';
+if(state.intro){document.querySelector('#introTitle').textContent=state.previous?'余烬之上，再起一行':'风雨交印';document.querySelector('#introText').textContent=state.previous?`上一局，你经营了 ${duration(state.previous.months??state.previous.years*12)}，最终遭遇「${state.previous.title}」。${state.previous.detail}\n\n${state.previous.bridge}\n\n你仍是会首。此后半年，你收拢旧部、清理旧账，另寻铺面。如今已是${calendarLabel()}，新行终于开张。旧事未远，这一次还须由你掌舵。`:"你曾入门派修业，盼着考学有成，飞升入朝，做一名大周神官。此番应试，却名落榜外。\n\n你回到百越五羊港，本想歇些时日，谁知父母已将商会托付于你。前路尚未想定，家业却已压上肩头。\n\n你是商会的会首，你的父母在一片混乱之中将商会交给你保管，并且去到了海外，只留给你几个亲信，现在你要为了自己的生存而活。";}
+if(state.over){document.querySelector('#ending').textContent=state.ending.title;document.querySelector('#summary').textContent=`本次经营 ${duration(state.turn)}。${state.ending.detail} ${state.terminal?'此番前路已断，不能歇业续接。你可以点击“重开”，从首次故事重新开始。':'家业虽败，前路未尽。'}`;return}if(state.intro)return;
+const m=major(),e=currentEvent();document.querySelector('#role').textContent=m?`${npcs[m.npc].name} · 时局来报 · 累计 ${duration(state.turn)} · ${m.title}`:e[0];document.querySelector('#portrait').textContent=reporterMark(m?npcs[m.npc].name:e[0]);document.querySelector('#text').textContent=m?m.text:e[2];['left','right'].forEach((id,k)=>{let j=k?5:3;document.getElementById(id).innerHTML=`${k?'':'← '}${m?m.choices[k]:e[j]}${k?' →':''}<small>${m?'事关存亡 · 请细读来报':'预选时查看上方增减'}</small>`});}
+function choose(right){if(state.over||state.intro)return;const m=major();if(m){state.done.push(state.turn);state.pendingMajor=null;state.majorIndex++;state.nextMajor=state.turn+(state.majorIndex%2?6:3);if(Number(right)!==m.safe||state.v[m.resource]<m.cost){const detail=Number(right)!==m.safe?m.detail:`你选择了应对之策，但${names[m.resource]}不足 ${m.cost}，此事终究未能办成。${m.detail}`;finish(m.death,detail,`${npcs[m.npc].name}带着幸存的亲信寻到你。旧商会已经失去，你们决定以新的行号收拢余部，另起炉灶。`)}else{state.v=state.v.map((v,i)=>Math.max(0,Math.min(100,v+m.delta[i])));state.last=`累计 ${duration(state.turn)} · 你渡过了「${m.title}」。商会付出了代价，但仍在经营。`;boundary()} }else{const e=currentEvent(),j=right?5:3;if(state.cardType!=='festival')recordEvent(e,right);state.v=state.v.map((v,i)=>Math.max(0,Math.min(100,v+e[j+1][i])));state.turn+=0.5;state.last=`累计 ${duration(state.turn)} · ${e[0]}：你选择了「${e[j]}」。`;boundary();if(!state.over)pickCard()}best=Math.max(best,state.turn);save();render()}
+function restartFromZero(){state=fresh();best=0;save();render()}
+function start(){if(state.turn===0)pickCard();state.intro=false;save();render()}
+function reset(){if(state.intro||state.terminal)return;if(!state.over)finish('主动歇业','你决定暂时关停生意，保存亲信与剩余家底。','四位亲信陪你清点旧账。你收回印信，准备换个起点再来。');const previous={...state.ending,months:state.turn};const seen=[...state.seenMajor];const history={elapsed:storyTime()+6,calendarOffset:calendarTime()+6,storySeen:[...state.storySeen],lastSeen:{...state.lastSeen},outcomes:{...state.outcomes}};state=fresh(previous,state.chapter+1);Object.assign(state,history);state.seenMajor=seen;state.fixedFirst=false;save();render()}
+document.querySelector('#chen').onclick=delegateChen;document.querySelector('#start').onclick=start;document.querySelector('#left').onclick=()=>choose(false);document.querySelector('#right').onclick=()=>choose(true);document.addEventListener('keydown',e=>{if(e.repeat)return;if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();choose(e.key==='ArrowRight')}});
+function clearPreview(){
+const el=document.querySelector('#card');if(el){el.style.transform='';el.classList?.remove('preview-left','preview-right');}
+for(let i=0;i<4;i++){const d=document.querySelector('#delta-'+i);if(d){d.textContent='';d.className='delta';}}
+const hint=document.querySelector('#previewHint');if(hint)hint.textContent='左右拖动预览影响，松手确认；短距离松手取消。';
+}
+function previewChoice(right){
+if(state.intro||state.over)return;
+const m=major();let values,warning='';
+if(m){if(Number(right)!==m.safe)warning='此选项将导致结局';else if(state.v[m.resource]<m.cost)warning=names[m.resource]+'不足 '+m.cost+'，将导致结局';else values=m.delta;}
+else values=currentEvent()[right?6:4];
+for(let i=0;i<4;i++){const d=document.querySelector('#delta-'+i);if(!d)continue;if(warning){d.textContent='!';d.className='delta danger';}else{const n=values[i];d.textContent=n>0?'↑ +'+n:n<0?'↓ '+n:'—';d.className='delta '+(n>0?'increase':n<0?'decrease':'neutral');}}
+const e=currentEvent();document.querySelector('#previewHint').textContent=(right?'→ ':'← ')+(m?m.choices[Number(right)]:e[right?5:3])+(warning?' · '+warning:' · 仅预览，尚未生效');
+}
+let startX=null,startY=null,dragActive=false;
+const card=document.querySelector('#card');
+card.onpointerdown=e=>{if(state.intro||state.over||e.button>0)return;startX=e.clientX;startY=e.clientY;dragActive=false;card.setPointerCapture(e.pointerId)};
+card.onpointermove=e=>{if(startX===null)return;const dx=e.clientX-startX,dy=e.clientY-startY;if(!dragActive&&Math.abs(dy)>Math.abs(dx)&&Math.abs(dy)>12){startX=null;clearPreview();return;}if(Math.abs(dx)<12){clearPreview();return;}dragActive=true;previewChoice(dx>0);card.style.transform='translateX('+Math.max(-100,Math.min(100,dx*.45))+'px) rotate('+Math.max(-10,Math.min(10,dx*.05))+'deg)';};
+card.onpointerup=e=>{const dx=startX===null?0:e.clientX-startX;const commit=dragActive&&Math.abs(dx)>55;startX=null;startY=null;dragActive=false;clearPreview();if(commit)choose(dx>0)};
+card.onpointercancel=card.onlostpointercapture=()=>{startX=null;startY=null;dragActive=false;clearPreview()};
+['left','right'].forEach((id,i)=>{const b=document.getElementById(id);b.onpointerenter=b.onfocus=()=>previewChoice(Boolean(i));b.onpointerleave=b.onblur=clearPreview;});
+document.querySelector('#npcList').innerHTML=npcs.map(n=>`<div><strong>${n.name} · ${n.role}</strong><p>${n.intro}</p><p><strong>经手业务：</strong>${n.duty}</p><p><strong>职权边界：</strong>${n.boundary}</p></div>`).join('');save();render();
+
+</script><script>
+
+(()=>{const terms={"远航图稿":"远航途中绘记的航路、港湾、岛礁等图样草稿。本作指首航带回、仍待校勘誊绘的材料，尚不是完整定本。","浅滩":"江河或海中水较浅的地方，常有泥沙堆积。船只误入可能搁浅，须留意水深与潮汐。","传教":"向他人讲解、传播宗教信仰及教义的活动。此处不特指某一种宗教，也不表示传说中的神迹确实存在。","海客":"本作指从海路来港经商的客商，常包括海外商人；不单凭这一称呼判定其籍贯或信仰。","海隼":"此处是本作虚构银钱上的鸟形纹饰名称。“海隼银钱”是按纹饰称呼的舶来银钱，交易时仍须验明重量与成色，不对应现实某一年代的币种。","金花诞":"以广府民俗为原型的节诞，日期为农历四月十七。民间祭拜金花夫人，祈求子嗣与家人平安。本作将其化用于五羊港，信仰传说不代表神明实际现身。","箱笼":"装盛、收存或搬运物品的箱子、笼筐等容器。此处指船上装货的箱筐。","落货册":"本作指卸货时登记船货的簿册，用来记录货物品类、数量等，便于核对实货与货单；不是通行于各朝的统一官定册名。","会首":"本作沿用的玩家称谓，指你所接掌的家族商行负责人。你不是整个十三行或公行的领袖，共同事务须与其他行商商议。","市舶司":"掌管海贸事务的官署。本作负责船舶报验、核货及征税；具体制度采用架空设定，不等同于各朝所有成例。","十三行":"本作中获准经营海外买卖的行商群体，并不限定为十三家。这是保留在早期远航背景中的架空制度。","公行":"本作中各行商联合议事的组织，协调同行事务；不是征税官署。","行商":"经营贸易的商人。本作特指承办海贸、接洽海客并代办相关手续的商家。","抽解":"历史海贸用语，指对入港货物抽取税课。这里仅解释词义，不设未经核实的明代具体税率。","保结":"为某人或某事担保而立下的文书，担保范围须以文书所载为准。","保商":"本作指为船货等事务具保的行商。保商制度在不同时期有差别，本作是架空改编。","针路":"航海时所循的方向与航路记录。草卷中的记录仍可能需要核验。","牵星板":"用于观测星体高度、辅助判断航向或位置的航海工具。","火长":"船上熟悉航路、风潮并负责领航等事务的人。不是掌管炉火的工匠。","定银":"订立买卖时先交的一部分银钱，余款与交货办法另依约定。","脚钱":"雇人搬运或运送货物所付的工钱。","契据":"记载买卖、租借等约定的文书。","飞升":"本世界的专用称谓：修仙求学后，通过考学进入朝廷任职，不是化作超自然神明。","神官":"本世界对入朝官员的称谓，并不表示拥有神力。","昌南":"游戏中的制瓷产地，以景德镇为原型。白瓷在此烧造，再运五羊港加彩。"};const keys=Object.keys(terms).sort((a,b)=>b.length-a.length);const rx=new RegExp('('+keys.join('|')+')','g');const pop=document.createElement('aside');pop.id='termPopup';pop.hidden=true;pop.setAttribute('role','dialog');pop.setAttribute('aria-label','词语释义');document.body.append(pop);let active=null;
+function close(){pop.hidden=true;if(active)active.setAttribute('aria-expanded','false');active=null;}
+function annotate(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const list=[];while(w.nextNode()){const n=w.currentNode;if(n.parentElement.closest('button,script,style,#termPopup,.term-link'))continue;if(keys.some(k=>n.data.includes(k)))list.push(n);}for(const n of list){const frag=document.createDocumentFragment();for(const part of n.data.split(rx)){if(terms[part]){const b=document.createElement('button');b.type='button';b.className='term-link';b.textContent=part;b.dataset.term=part;b.setAttribute('aria-expanded','false');b.setAttribute('aria-controls','termPopup');frag.append(b);}else frag.append(document.createTextNode(part));}n.replaceWith(frag);}}
+const roots=['role','text','introText','summary','world','npcList','log'];const observer=new MutationObserver(()=>{observer.disconnect();roots.forEach(id=>{const el=document.getElementById(id);if(el)annotate(el)});watch();});function watch(){roots.forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el,{childList:true,subtree:true,characterData:true})})}roots.forEach(id=>{const el=document.getElementById(id);if(el)annotate(el)});watch();
+document.addEventListener('pointerdown',e=>{if(e.target.closest('.term-link'))e.stopPropagation();},true);
+document.addEventListener('click',e=>{const b=e.target.closest('.term-link');if(b){e.preventDefault();e.stopPropagation();if(active===b&&!pop.hidden){close();return;}close();active=b;b.setAttribute('aria-expanded','true');pop.replaceChildren();const title=document.createElement('strong');title.textContent=b.dataset.term;const body=document.createElement('p');body.textContent=terms[b.dataset.term];const dismiss=document.createElement('button');dismiss.textContent='关闭';dismiss.onclick=()=>{close();b.focus()};pop.append(title,body,dismiss);pop.hidden=false;const r=b.getBoundingClientRect();pop.style.left=Math.max(12,Math.min(r.left,innerWidth-pop.offsetWidth-12))+'px';pop.style.top=Math.max(12,Math.min(r.bottom+8,innerHeight-pop.offsetHeight-12))+'px';return;}if(!pop.hidden&&!pop.contains(e.target)){close();e.preventDefault();e.stopPropagation();}},true);
+document.addEventListener('keydown',e=>{if(!pop.hidden){if(e.key==='Escape'){const b=active;close();b?.focus();}if(['Escape','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();e.stopImmediatePropagation();}}},true);window.addEventListener('resize',close);window.addEventListener('scroll',close,{passive:true});})();
+
+</script></html>
